@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+
+    <title>OCR for Utility Bills</title>
+    <!--
+    SOFTY PINKO
+    https://templatemo.com/tm-535-softy-pinko
+    -->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/font-awesome.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/templatemo-softy-pinko.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <!-- ***** Header Area End ***** -->
+    <!-- ***** Welcome Area Start ***** -->
+    <div class="welcome-area" id="welcome">
+
+        <!-- ***** Header Text Start ***** -->
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
+                        <h1><strong>Optical Character Recognition</strong><br>for utility bills</h1>
+                        <p>This project will help you extract the "Due date" and "Amount"<br> from various scanned bills</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Header Text End ***** -->
+    </div>
+    <!-- ***** Welcome Area End ***** -->
+    <!-- ***** Features Small Start ***** -->
+    <section class="section home-feature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <!-- ***** Features Small Item Start ***** -->
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+                            <div class="features-small-item">
+                                <div class="icon">
+                                    <i><img src="{{ url_for('static', filename='assets/images/featured-item-01.png') }}" alt=""></i>
+                                </div>
+                                <h5 class="features-title">Reliable</h5>
+                                <p>No human intervention makes it highly Reliable</p>
+                            </div>
+                        </div>
+                        <!-- ***** Features Small Item End ***** -->
+                        <!-- ***** Features Small Item Start ***** -->
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
+                            <div class="features-small-item">
+                                <div class="icon">
+                                    <i><img src="{{ url_for('static', filename='assets/images/featured-item-01.png') }}" alt=""></i>
+                                </div>
+                                <h5 class="features-title">Fast</h5>
+                                <p>Saves time spent on managing unsearchable data</p>
+                            </div>
+                        </div>
+                        <!-- ***** Features Small Item End ***** -->
+                        <!-- ***** Features Small Item Start ***** -->
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+                            <div class="features-small-item">
+                                <div class="icon">
+                                    <i><img src="{{ url_for('static', filename='assets/images/featured-item-01.png') }}" alt=""></i>
+                                </div>
+                                <h5 class="features-title">Efficient</h5>
+                                <p>Saves time, money and resources wasted on manual methods</p>
+                            </div>
+                        </div>
+                        <!-- ***** Features Small Item End ***** -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Features Small End ***** -->
+    <!-- ***** Form ***** -->
+    <section class="section padding-top-70 padding-bottom-0 container" id="features">
+        <h2 style="color: black; text-align:center; font-family: Arial, Helvetica, sans-serif;">Upload File</h2>
+        <form action="/success" method="post" enctype="multipart/form-data">
+            <div style="padding-bottom: 15px; padding-right: 200px; padding-left: 200px">
+                <label for="formFile" class="form-label">Input image file</label>
+                <input class="form-control" type="file" name="file">
+            </div>
+            <div style="padding-bottom: 15px; padding-right: 200px; padding-left: 500px" class="container">
+                <input type="submit" value="Upload" style=" background-color: #9370D8;
+                     border: none; color: white; padding: 12px 28px; text-align: center;
+                     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+            </div>
+            <div style="padding-bottom: 20px; padding-top: 15px;">
+                <h5 style="color: #191970; text-align:center; font-family: Arial, Helvetica, sans-serif;">Amount Payable:<strong> {{amount}}</strong></h5>
+                <h5 style="color: #191970; text-align:center; font-family: Arial, Helvetica, sans-serif;">Due date:<strong> {{due_date}}</strong></h5>
+            </div>
+        </form>
+    </section>
+
+    <!-- ***** Features Big Item Start ***** -->
+    <section class="section padding-top-70 padding-bottom-0" id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-sm-12 align-self-center" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                    <img src="{{ url_for('static', filename='assets/images/left-image.png') }}" class="rounded img-fluid d-block mx-auto" alt="App">
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-top-fix">
+                    <div class="left-heading">
+                        <h2 class="section-title">How it can help Businesses</h2>
+                    </div>
+                    <div class="left-text">
+                        <p>
+                            This project focuses on extraction of final bill-amount and due date from utility bills like telephone bills, electricity bills,etc.
+                            Optical Character Recognition deals with the problem of recognizing all kinds of different characters. Both handwritten and printed
+                            characters can be recognized and converted into machine-readable, digital data format.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Features Big Item End ***** -->
+    <!-- ***** Features Big Item Start ***** -->
+    <section class="section padding-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
+                    <div class="left-heading">
+                        <h2 class="section-title">We can help you to grow your business</h2>
+                    </div>
+                    <div class="left-text">
+                        <p>
+                            Businesses that employ OCR capabilities save time and resources that would otherwise be necessary to manage unsearchable data.
+                            OCR-processed textual information can be used by businesses for various purposes such as machine learning or statistical analysis.
+                            It eliminates manual data entry, helps process more data faster and with fewer resources, reduces errors,
+                            improves productivity
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5 col-md-12 col-sm-12 align-self-center mobile-bottom-fix-big" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                    <img src="{{ url_for('static', filename='assets/images/right-image.png') }}" class="rounded img-fluid d-block mx-auto" alt="App">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Features Big Item End ***** -->
+    <!-- ***** Home Parallax Start ***** -->
+    <section class="mini" id="work-process">
+        <div class="mini-content">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-lg-3 col-lg-6">
+                        <div class="info">
+                            <h1>TEAM</h1>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ***** Mini Box Start ***** -->
+                <div class="row">
+                    <!-- ***** Testimonials Item Start ***** -->
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="padding-left: 25px;">
+                        <div style="align-content:center; padding-left:25px;">
+                            <i>
+                                <img src="{{ url_for('static', filename='assets/images/piyusha.png') }}" style="border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%;
+                                      border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%; width:250px; height:250px; align-content:center" alt="">
+                            </i>
+                        </div>
+                        <div style="padding-left:50px; padding-top:30px">
+                            <p style="color:black; font-family: Helvetica, sans-serif;"> <strong>PIYUSHA TAWARE</strong></p>
+                            <p style="color:black; font-family: Helvetica, sans-serif;"> College of Engineering, Pune</p>
+                        </div>
+                    </div>
+                    <!-- ***** Testimonials Item End ***** -->
+                    <!-- ***** Testimonials Item Start ***** -->
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="padding-left: 25px;">
+                        <div style="align-content:center; padding-left:25px;">
+                            <i>
+                                <img src="{{ url_for('static', filename='assets/images/mrudula.png') }}" style="border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%;
+                                      border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%; width:250px; height:250px; align-content:center" alt="">
+                            </i>
+                        </div>
+                        <div style="padding-left:50px; padding-top:30px">
+                            <p style="color:black; font-family: Helvetica, sans-serif;"> <strong>MRUDULA JADHAV</strong></p>
+                            <p style="color:black; font-family: Helvetica, sans-serif;"> College of Engineering, Pune</p>
+                        </div>
+                    </div>
+                    <!-- ***** Testimonials Item End ***** -->
+                    <!-- ***** Testimonials Item Start ***** -->
+                    <div class="col-lg-4 col-md-6 col-sm-12" style="padding-left: 25px;">
+                        <div style="align-content:center; padding-left:25px;">
+                            <i>
+                                <img src="{{ url_for('static', filename='assets/images/advait.png') }}" style="border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%;
+                                      border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%; width:255px; height:250px; align-content:center" alt="">
+                            </i>
+                        </div>
+                        <div style="padding-left:50px; padding-top:30px">
+                            <p style="color:black; font-family: Helvetica, sans-serif;"> <strong>ADVAIT DIXIT</strong></p>
+                            <p style="color:black; font-family: Helvetica, sans-serif;"> College of Engineering, Pune</p>
+                        </div>
+                    </div>
+
+                    <!-- ***** Mini Box End ***** -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Home Parallax End ***** -->
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='assets/js/jquery-2.1.0.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ url_for('static', filename='assets/js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugins -->
+    <script src="{{ url_for('static', filename='assets/js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/imgfix.min.js') }}"></script>
+
+    <!-- Global Init -->
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

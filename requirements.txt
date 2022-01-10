@@ -1,0 +1,7 @@
+Flask==1.1.2
+imutils==0.5.4
+numpy==1.19.5
+opencv_python==4.5.1.48
+openpyxl==3.0.4
+pandas==1.0.5
+pytesseract==0.3.7
