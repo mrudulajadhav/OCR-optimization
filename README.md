@@ -21,11 +21,15 @@ git clone https://github.com/mrudulajadhav/OCR-optimization.git
 ```
 cd OCR-optimization
 ```
-3. Install the prerequisites
+3. Install the tesseract-OCR engine from:
+
+  https://github.com/UB-Mannheim/tesseract/wiki
+
+4. Install the prerequisites
 ```
 pip install -r requirements.txt
 ```
-4. Run the WebApp.py file 
+5. Run the web application
 ```
 python WebApp.py
 ```
