@@ -6,9 +6,6 @@ import pytesseract as tess
 from itertools import permutations 
 import re
 import pandas as pd
-from openpyxl import load_workbook
-tess.pytesseract.tesseract_cmd = "tesseract.exe"
-
 
 # Returns a bounding box and probability score if it is more than minimum confidence
 def predictions(prob_score, geo):
@@ -86,9 +83,9 @@ def ocr_(input_img):
     crop2 = img[:367, half_h-15:] #for cornercases
 
     ret,bininv = cv2.threshold(crop,200,255,cv2.THRESH_BINARY_INV)#binary inversion
-    cv2.imwrite("temp.png",bininv)
+    cv2.imwrite("Images/temp.png",bininv)
 
-    image = cv2.imread("temp.png")
+    image = cv2.imread("Images/temp.png")
 
     #Saving a original image and shape
     orig = image.copy()
@@ -110,7 +107,7 @@ def ocr_(input_img):
     blob = cv2.dnn.blobFromImage(image, 1.0, (W, H),
 	    (123.68, 116.78, 103.94), swapRB=True, crop=False)
     # load the pre-trained EAST model for text detection 
-    net = cv2.dnn.readNet("frozen_east_text_detection.pb")
+    net = cv2.dnn.readNet("model/frozen_east_text_detection.pb")
 
     # The following two layer need to pulled from EAST model for achieving this. 
     layerNames = ["feature_fusion/Conv_7/Sigmoid","feature_fusion/concat_3"]
@@ -134,13 +131,13 @@ def ocr_(input_img):
         # draw the bounding box on the image
         cv2.rectangle(orig, (startX, startY), (endX, endY), (0, 255, 0), 2)
         bb.append((startX, startY, endX, endY))
-    cv2.imwrite("EAST.png",orig)
+    cv2.imwrite("Images/EAST.png",orig)
 
     #bb is the list of bounding boxes detected by EAST 
     boundingBoxes = bb
 
     #EAST.png is image after text detection by EAST detector
-    img = cv2.imread("EAST.png")
+    img = cv2.imread("Images/EAST.png")
 
     args = {"image":"EAST.png", "method":"top-to-bottom"}
 
@@ -308,20 +305,5 @@ def ocr_(input_img):
                         store_amt = t[1].strip(".")
                     else:
                         break
-
-    # new dataframe with same columns
-    df = pd.DataFrame({'Due Date': [store_date],
-                       'Amount Payable': [store_amt]})
-    writer = pd.ExcelWriter('demo.xlsx', engine='openpyxl')
-    # try to open an existing workbook
-    writer.book = load_workbook('demo.xlsx')
-    # copy existing sheets
-    writer.sheets = dict((ws.title, ws) for ws in writer.book.worksheets)
-    # read existing file
-    reader = pd.read_excel(r'demo.xlsx')
-    # write out the new sheet
-    df.to_excel(writer,index=False,header=False,startrow=len(reader)+1)
-
-    writer.close()
 
     return store_date, store_amt
